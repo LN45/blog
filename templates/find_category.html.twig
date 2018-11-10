@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Retrouver la catégorie d'un article</h1>
+
+    <p>l'article {{ article.title }} vient de la catégorie {{ category.name }}</p>
+
+    <a href="{{path('article', {'id': article.id}) }}">Retour à l'article</a>
+{% endblock %}

@@ -3,14 +3,12 @@
 {% block title %}{% endblock %}
 
 {% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
     {% for category in category %}
         <h2>-> {{ category.id }}</h2>
         <h2>-> {{ category.name }}</h2>
     {% endfor %}
-{% endblock %}
-
-{% block body %}
-
-
-
 {% endblock %}

@@ -20,6 +20,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends AbstractController
 {
+
+    /**
+     * @Route("/blog/{slug}", name="blog_title", requirements={"slug"="([a-z0-9-]+)"})
+     */
+    public function showTitle($slug = "Article Sans Titre")
+    {
+        return $this->render('show.html.twig',[
+            'slug' => str_replace('-',' ', ucwords($slug)),
+        ]);
+    }
+
     /**
      *
      * @Route("/category", name="blog_index")
@@ -57,15 +68,12 @@ class BlogController extends AbstractController
         );
     }
 
-
-
-
     /**
      * Getting a article with a formatted slug for title
      *
      * @param string $slug The slugger
      *
-     * @Route("/{slug<^[a-z0-9-]+$>}",
+     * @Route("blog/{slug<^[a-z0-9-]+$>}",
      *     defaults={"slug" = null},
      *     name="blog_show")
      *  @return Response A response instance

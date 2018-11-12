@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    {% for category in category %}
+        <h2>-> {{ category.id }}</h2>
+        <h2>-> {{ category.name }}</h2>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+
+
+{% endblock %}

@@ -25,7 +25,7 @@ class BlogController extends AbstractController
      * @Route("/category", name="blog_index")
      * @return Response A response instance
      */
-    public function index(Request $request) : Response
+    public function index(Request $request): Response
     {
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
@@ -42,8 +42,8 @@ class BlogController extends AbstractController
         $form = $this->createForm(
             CategoryType::class, $category);
         $form->handleRequest($request);
-        if ($form->isSubmitted()){
-            $em=$this->getDoctrine()->getManager();
+        if ($form->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
 
@@ -56,7 +56,6 @@ class BlogController extends AbstractController
             ]
         );
     }
-
 
 
 

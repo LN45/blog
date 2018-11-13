@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Voici la liste des articles la catégorie {{ category.id }}: {{ category.name }}</h1>
+
+    {% for article in articles %}
+    <h2>-> {{ article.title }}</h2>
+    {% endfor %}
+    <a href="{{path('find_category', {'id': category.id}) }}">Retour à la page catégorie d'un article</a>
+
+{% endblock %}

@@ -20,7 +20,7 @@ class ArticleController extends AbstractController
      */
     public function show(Article $article) : Response
     {
-        return $this->render('article.html.twig',[
+        return $this->render('article/article.html.twig',[
             'article' => $article,
         ]);
     }
@@ -30,7 +30,7 @@ class ArticleController extends AbstractController
      */
     public function findCategory(Article $article) : Response
     {
-        return $this->render('find_category.html.twig',[
+        return $this->render('category/find_category.html.twig',[
             'article' => $article,
             'category' => $article->getCategory(),
         ]);

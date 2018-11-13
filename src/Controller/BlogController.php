@@ -26,7 +26,7 @@ class BlogController extends AbstractController
      */
     public function showTitle($slug = "Article Sans Titre")
     {
-        return $this->render('show.html.twig',[
+        return $this->render('blog/showTitle.html.twig',[
             'slug' => str_replace('-',' ', ucwords($slug)),
         ]);
     }
@@ -104,6 +104,26 @@ class BlogController extends AbstractController
             'blog/show.html.twig', [
                 'article' => $article,
                 'slug' => $slug
+            ]
+        );
+    }
+
+    /**
+     *
+     * @Route("/blog/category/{category}", name="blog_show_category")
+     * @return Response A response instance
+     */
+    public function showByCategory(string $category){
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => $category]);
+
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findBy(['category'=>$category->getId()],['id' => 'DESC'],3);
+        return $this->render('blog/category.html.twig',[
+            'category' => $category,
+            'articles' => $articles
             ]
         );
     }

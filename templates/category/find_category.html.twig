@@ -5,5 +5,6 @@
 
     <p>l'article {{ article.title }} vient de la catégorie {{ category.name }}</p>
 
-    <a href="{{path('article', {'id': article.id}) }}">Retour à l'article</a>
+    <a href="{{path('article', {'id': article.id}) }}">Retour à l'article</a></br>
+    <a href="{{path('category_name', {'id': category.id}) }}">Voir la catégorie {{ category.name }}</a>
 {% endblock %}

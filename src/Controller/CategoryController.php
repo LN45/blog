@@ -15,22 +15,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
-    /**
+    /*/**
      * @Route("/category/{id}", name="category")
      */
-    public function show(Category $category) : Response
+    /*public function show(Category $category) : Response
     {
-        return $this->render('category.html.twig',[
+        return $this->render('category/categoryId.html.twig',[
             'category' => $category
         ]);
-    }
+    }*/
 
     /**
-     * @Route("/categories_list/{id}", name="categories_list")
+     * @Route("/category_name/{id}", name="category_name")
      */
     public function index(Category $category) : Response
     {
-        return $this->render('categories_list.html.twig', [
+        return $this->render('category/category_name.html.twig', [
             'category' => $category,
             'articles' => $category->getArticles()
         ]);

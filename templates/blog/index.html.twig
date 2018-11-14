@@ -7,8 +7,17 @@
 {% block stylesheets %}{% endblock %}
 
 {% block body %}
+    <h1>Ajouter une nouvelle catégorie</h1>
     {{ form_start(form) }}
     {{ form_row(form.name) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
     {{ form_end(form) }}
+    <div>
+        <h2>Voici la liste complète des catégories</h2>
+        {% for category in categories %}
+        <ul class="list-group">
+            <li class="list-group-item">{{ category.name }}</li>
+        </ul>
+        {% endfor %}
+    </div>
 {% endblock %}

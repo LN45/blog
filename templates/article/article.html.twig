@@ -3,4 +3,5 @@
 {% block body %}
     <h1>Le nom de l'article {{ article.id }} est : {{ article.title }}</h1>
         <a href="{{path('find_category', {'id': article.id}) }}">Voir la categorie de cet article</a>
+
 {% endblock %}

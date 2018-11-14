@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception;
 use App\Entity\Article;
 use App\Entity\Category;
-use App\Form\ArticleSearchType;
 use App\Form\CategoryType;
+use App\Form\ArticleType;
 use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends AbstractController
@@ -42,6 +42,10 @@ class BlogController extends AbstractController
             ->getRepository(Article::class)
             ->findAll();
 
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+
         $category = new Category();
 
         if (!$articles) {
@@ -63,6 +67,7 @@ class BlogController extends AbstractController
         return $this->render(
             'blog/index.html.twig', [
                 'articles' => $articles,
+                'categories'=> $categories,
                 'form' => $form->createView(),
             ]
         );
@@ -124,6 +129,49 @@ class BlogController extends AbstractController
         return $this->render('blog/category.html.twig',[
             'category' => $category,
             'articles' => $articles
+            ]
+        );
+    }
+
+    /**
+     *
+     * @Route("/article", name="form_article")
+     * @return Response A response instance
+     */
+    public function formArticle(Request $request): Response
+    {
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findAll();
+
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+
+        $article = new Article();
+
+        if (!$articles) {
+            throw $this->createNotFoundException(
+                'No article found in article\'s table.'
+            );
+        }
+
+        $form = $this->createForm(
+            ArticleType::class, $article);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager(); //em pour dire entityManager
+            $em->persist($article);
+            $em->flush();
+
+        }
+
+        return $this->render(
+            'blog/article_form.html.twig', [
+                'articles' => $articles,
+                'category' => $article->getCategory(),
+                'categories'=> $categories,
+                'form' => $form->createView(),
             ]
         );
     }

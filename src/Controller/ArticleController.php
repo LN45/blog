@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
+use App\Entity\Tag;
 
 class ArticleController extends AbstractController
 {
@@ -22,6 +23,7 @@ class ArticleController extends AbstractController
     {
         return $this->render('article/article.html.twig',[
             'article' => $article,
+            'tags' => $article->getTags(),
         ]);
     }
 

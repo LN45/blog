@@ -24,7 +24,7 @@ class ArticleType extends AbstractType
         $builder->add('title');
         $builder->add('content');
 
-        //permet de définir un select de toutes les catégories de la BDD
+        //permet de définir un select sur le name de toutes les catégories de la BDD
         $builder->add('category', EntityType::class, [
             'class' => Category::class,
             'choice_label' => 'name',

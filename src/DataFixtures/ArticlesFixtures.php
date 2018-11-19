@@ -29,7 +29,7 @@ class ArticlesFixtures extends Fixture implements DependentFixtureInterface
                 $article->setTitle(mb_strtolower($faker->title));
                 $article->setContent($faker->text);
                 $article->setCategory($this->getReference('categorie_'.$cat));
-                // categorie_0 fait reference à la premiere categorie générée.
+                // categorie_.$cat fait reference à la premiere categorie générée.
 
                 $manager->persist($article);
                 $manager->flush();

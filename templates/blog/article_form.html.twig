@@ -2,8 +2,6 @@
 
 {% block title %}Index{% endblock %}
 
-{% block stylesheets %}{% endblock %}
-
 {% block body %}
     <h1>Ajouter un article</h1>
     {{ form_start(form) }}
@@ -16,8 +14,8 @@
         <h2>Voici la liste complète des articles et de leur catégorie</h2>
         {% for article in articles %}
             <ul class="list-group">
-                <li class="list-group-item">{{ article.title }}</li>
-                <a href="{{path('find_category', {'id': article.id}) }}">Voir la categorie de cet article</a>
+                <li class="list-group-item">{{ article.title }}- <a href="{{path('find_category', {'id': article.id}) }}">Voir la categorie de cet article</a></li>
+
             </ul>
         {% endfor %}
     </div>

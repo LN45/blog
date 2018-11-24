@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block stylesheets %}
-
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -13,4 +13,6 @@
         <p>{{ article.id }} </p>
         <p>{{ article.content }}</p>
     {% endfor %}
+{% endblock %}
+{% block javascripts %}
 {% endblock %}

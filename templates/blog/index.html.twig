@@ -4,8 +4,6 @@
 
 {% block title %}Index{% endblock %}
 
-{% block stylesheets %}{% endblock %}
-
 {% block body %}
     <h1>Ajouter une nouvelle catégorie</h1>
     {{ form_start(form) }}
@@ -15,7 +13,7 @@
     <div>
         <h2>Voici la liste complète des catégories</h2>
         {% for category in categories %}
-        <ul class="list-group">
+        <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ category.name }}</li>
         </ul>
         {% endfor %}

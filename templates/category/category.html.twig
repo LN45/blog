@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Le nom de la categorie {{ category.id }} est : {{ category.name }}</h1>
+    <a href="{{path('categories_list', {'id': category.id}) }}">Voir la liste détaillée</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Retrouver la catégorie d'un article</h1>
+
+    <p>l'article {{ article.title }} vient de la catégorie {{ category.name }}</p>
+
+    <a href="{{path('article', {'id': article.id}) }}">Voir l'article</a></br>
+    <a href="{{path('category_name', {'id': category.id}) }}">Voir la catégorie {{ category.name }}</a></br>
+    <a href="{{path('form_article', {'id': article.id}) }}">Retour au formulaire d'ajout d'un article</a>
+{% endblock %}
